@@ -4,9 +4,6 @@ $(call inherit-product, build/target/product/languages_full.mk)
 # ste-sony
 $(call inherit-product, hardware/ste-sony/common.mk)
 
-# gApps binaries
-#$(call inherit-product-if-exists, vendor/google/gapps.mk)
-
 # Inherit from the vendor common montblanc definitions
 $(call inherit-product-if-exists, vendor/sony/montblanc-common/montblanc-common-vendor.mk)
 
