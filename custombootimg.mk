@@ -21,7 +21,6 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(recovery_ramdisk) $(INSTA
 	$(hide) cp -R $(PRODUCT_OUT)/recovery/root/sbin/* $(PRODUCT_OUT)/root/sbin/
 	$(hide) cp $(LOCAL_PATH)/config/init.environ.rc $(PRODUCT_OUT)/root/
 	$(hide) cp $(LOCAL_PATH)/recovery/init.rc $(PRODUCT_OUT)/recovery/root/
-	$(hide) cp $(LOCAL_PATH)/recovery/runatboot.sh $(PRODUCT_OUT)/recovery/root/sbin/
 
 	$(hide) $(MKBOOTFS) $(PRODUCT_OUT)/root > $(PRODUCT_OUT)/ramdisk.cpio
 	$(hide) cp $(PRODUCT_OUT)/ramdisk.cpio $(PRODUCT_OUT)/combinedroot/sbin/
