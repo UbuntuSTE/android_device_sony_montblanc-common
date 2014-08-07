@@ -10,21 +10,23 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(recovery_ramdisk) $(INSTA
 
 	$(hide) rm -rf $(PRODUCT_OUT)/combinedroot
 	$(hide) mkdir -p $(PRODUCT_OUT)/combinedroot/sbin
-	$(hide) cp $(PRODUCT_OUT)/root/logo.rle $(PRODUCT_OUT)/combinedroot/
+
+	$(hide) mv $(PRODUCT_OUT)/root/logo.rle $(PRODUCT_OUT)/combinedroot/
+	$(hide) cp $(PRODUCT_OUT)/utilities/busybox $(PRODUCT_OUT)/combinedroot/sbin/
+
 	$(hide) cp $(INITSH) $(PRODUCT_OUT)/combinedroot/sbin/
 	$(hide) chmod 755 $(PRODUCT_OUT)/combinedroot/sbin/init.sh
 	$(hide) ln -s sbin/init.sh $(PRODUCT_OUT)/combinedroot/init
-	$(hide) cp $(PRODUCT_OUT)/utilities/busybox $(PRODUCT_OUT)/combinedroot/sbin/
 	$(hide) cp $(BOOTREC_DEVICE) $(PRODUCT_OUT)/combinedroot/sbin/
 	$(hide) cp $(BOOTREC_LED) $(PRODUCT_OUT)/combinedroot/sbin/
 
-	$(hide) cp $(LOCAL_PATH)/config/init.environ.rc $(PRODUCT_OUT)/root/
-	$(hide) cp $(LOCAL_PATH)/recovery/init.rc $(PRODUCT_OUT)/recovery/root/
-
 	$(hide) $(MKBOOTFS) $(PRODUCT_OUT)/ubuntu-root > $(PRODUCT_OUT)/ramdisk.cpio
 	$(hide) cp $(PRODUCT_OUT)/ramdisk.cpio $(PRODUCT_OUT)/combinedroot/sbin/
+
+	$(hide) cp $(LOCAL_PATH)/recovery/init.rc $(PRODUCT_OUT)/recovery/root/
 	$(hide) $(MKBOOTFS) $(PRODUCT_OUT)/recovery/root > $(PRODUCT_OUT)/ramdisk-recovery.cpio
 	$(hide) cp $(PRODUCT_OUT)/ramdisk-recovery.cpio $(PRODUCT_OUT)/combinedroot/sbin/
+
 	$(hide) $(MKBOOTFS) $(PRODUCT_OUT)/combinedroot > $(PRODUCT_OUT)/combinedroot.cpio
 	$(hide) cat $(PRODUCT_OUT)/combinedroot.cpio | gzip > $(PRODUCT_OUT)/combinedroot.fs
 
