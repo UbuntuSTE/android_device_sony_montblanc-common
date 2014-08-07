@@ -20,7 +20,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(recovery_ramdisk) $(INSTA
 	$(hide) cp $(BOOTREC_DEVICE) $(PRODUCT_OUT)/combinedroot/sbin/
 	$(hide) cp $(BOOTREC_LED) $(PRODUCT_OUT)/combinedroot/sbin/
 
-	$(hide) $(MKBOOTFS) $(PRODUCT_OUT)/ubuntu-root > $(PRODUCT_OUT)/ramdisk.cpio
+	$(hide) cd $(TARGET_UBUNTU_ROOT_OUT) && find . | cpio -o -H newc > $(PRODUCT_OUT)/ramdisk.cpio
 	$(hide) cp $(PRODUCT_OUT)/ramdisk.cpio $(PRODUCT_OUT)/combinedroot/sbin/
 
 	$(hide) cp $(LOCAL_PATH)/recovery/init.rc $(PRODUCT_OUT)/recovery/root/
