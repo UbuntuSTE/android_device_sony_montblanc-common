@@ -23,6 +23,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel $(recovery_ramdisk) $(INSTA
 	$(hide) sed -i '/panicpath=/ a\echo 1 > /sys/devices/platform/ab8500-i2c.0/ab8500-usb.0/boot_time_device' $(TARGET_UBUNTU_ROOT_OUT)/scripts/panic/adbd
 	$(hide) sed -i 's/18d1/0FCE/' $(TARGET_UBUNTU_ROOT_OUT)/scripts/panic/adbd
 	$(hide) sed -i 's/D002/6171/' $(TARGET_UBUNTU_ROOT_OUT)/scripts/panic/adbd
+	$(hide) sed -i 's/by-partlabel by-name by-label by-path by-uuid by-partuuid by-id/by-partlabel by-name by-label by-path by-uuid by-partuuid by-id ../' $(TARGET_UBUNTU_ROOT_OUT)/scripts/touch
 
 	$(hide) cd $(TARGET_UBUNTU_ROOT_OUT) && find . | cpio -o -H newc > $(PRODUCT_OUT)/ramdisk.cpio
 	$(hide) cp $(PRODUCT_OUT)/ramdisk.cpio $(PRODUCT_OUT)/combinedroot/sbin/
