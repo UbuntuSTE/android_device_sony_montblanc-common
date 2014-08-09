@@ -133,7 +133,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 
 # Custom init scripts
 PRODUCT_COPY_FILES += \
-        device/sony/montblanc-common/config/init.rc:root/init.rc \
         device/sony/montblanc-common/config/init.environ.rc:root/init.environ.rc \
         device/sony/montblanc-common/config/init.st-ericsson.rc:root/init.st-ericsson.rc \
         device/sony/montblanc-common/config/ueventd.st-ericsson.rc:root/ueventd.st-ericsson.rc \
