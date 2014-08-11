@@ -151,5 +151,9 @@ PRODUCT_COPY_FILES += \
         device/sony/montblanc-common/config/gps.conf:system/etc/gps.conf \
         device/sony/montblanc-common/config/cacert.txt:system/etc/suplcert/cacert.txt
 
+# Ubuntu Overlay Files
+PRODUCT_COPY_FILES += \
+        device/sony/montblanc-common/ubuntu/udev.rules:system/ubuntu/lib/udev/rules.d/70-android.rules
+
 # Garbage Collector type
 PRODUCT_TAGS += dalvik.gc.type-precise
