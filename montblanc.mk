@@ -153,7 +153,8 @@ PRODUCT_COPY_FILES += \
 
 # Ubuntu Overlay Files
 PRODUCT_COPY_FILES += \
-        device/sony/montblanc-common/ubuntu/udev.rules:system/ubuntu/lib/udev/rules.d/70-android.rules
+        device/sony/montblanc-common/ubuntu/udev.rules:system/ubuntu/lib/udev/rules.d/70-android.rules \
+        device/sony/montblanc-common/ubuntu/powerd-config.xml:system/ubuntu/usr/share/powerd/device_configs/config-default.xml
 
 # Garbage Collector type
 PRODUCT_TAGS += dalvik.gc.type-precise
